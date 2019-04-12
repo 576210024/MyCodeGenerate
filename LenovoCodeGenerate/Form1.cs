@@ -1340,6 +1340,7 @@ namespace LenovoCodeGenerate
                 b++;
             }
             sb.AppendFormat("               sql.Append(\" ) \");                             \r\n");
+            sb.AppendFormat("               _sqlList.Add(sql.ToString());                    \r\n"); 
             sb.AppendFormat("               #endregion sql                                   \r\n");
             sb.Append("               }      \r\n");
             return sb.ToString();
