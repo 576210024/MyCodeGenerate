@@ -789,11 +789,12 @@ namespace LenovoCodeGenerate
                 sb.Append("        }                                                                               \r\n  ");
                 sb.Append("                                                                                        \r\n  ");
                 sb.Append("        public override void OnViewLoaded()                                              \r\n  ");
-                sb.Append("        {                                                                               \r\n  ");
-                sb.Append("             View.m_SelectCondition = new 【类名称】();                                 \r\n  ");
-                sb.Append("             View.m_Delete【业务分类】s = new List<【类名称】>();                             \r\n  ");
-                sb.Append("             View.m_Insert【业务分类】s = new List<【类名称】>();                                                 \r\n  ");
-                sb.Append("             View.m_Update【业务分类】s = new List<【类名称】>();                             \r\n  ");
+                sb.Append("        {                                                                                \r\n  ");
+                sb.Append("             View.m_Select【业务分类】Condition = new 【类名称】();                      \r\n  ");
+                sb.Append("             View.m_【业务分类】s = new List<【类名称】>();                             \r\n  ");
+                sb.Append("             View.m_Delete【业务分类】s = new List<【类名称】>();                        \r\n  ");
+                sb.Append("             View.m_Insert【业务分类】s = new List<【类名称】>();                        \r\n  ");
+                sb.Append("             View.m_Update【业务分类】s = new List<【类名称】>();                        \r\n  ");
                 sb.Append("                                                                                        \r\n  ");
                 sb.Append("                                                                                        \r\n  ");
                 sb.Append("        }                                                                               \r\n  ");
@@ -803,7 +804,7 @@ namespace LenovoCodeGenerate
                 sb.Append("        ///<summary>                                                                    \r\n");
                 sb.Append("        public List<【类名称】> GetByCondition【业务分类】List()                    \r\n ");
                 sb.Append("        {                                                                            \r\n  ");
-                sb.Append("            return FacadeProxy.【业务分类】BusinessProxy().GetByCondition【业务分类】List(View.m_SelectCondition);\r\n  ");
+                sb.Append("            return FacadeProxy.【业务分类】BusinessProxy().GetByCondition【业务分类】List(View.m_Select【业务分类】Condition);\r\n  ");
                 sb.Append("        }                                                                     \r\n  ");
                 sb.Append("                                                                              \r\n  ");
                 sb.Append("        #endregion                                                            \r\n  ");
@@ -903,7 +904,7 @@ namespace LenovoCodeGenerate
                 sb.Append("        ///<summary>                                                                 \r\n  ");
                 sb.Append("        /// 查询条件参数                                                             \r\n  ");
                 sb.Append("        ///<summary>                                                                 \r\n  ");
-                sb.Append("        【类名称】 m_SelectCondition { get; set; }                                   \r\n  ");
+                sb.Append("        【类名称】 m_Select【业务分类】Condition { get; set; }                                   \r\n  ");
                 sb.Append("        ///<summary>                                                                 \r\n  ");
                 sb.Append("        /// 查询结果集                                                               \r\n  ");
                 sb.Append("        ///<summary>                                                                 \r\n  ");
