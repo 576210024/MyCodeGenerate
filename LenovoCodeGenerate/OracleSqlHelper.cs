@@ -391,7 +391,7 @@ namespace LenovoCodeGenerate
         #region 动态 取表里字段的类型和长度,此处没有动态用到connstr,是默认的！ 
         public System.Data.DataTable GetTabType(string tabnale)
         {
-            string sql = "select T.table_name,T.column_name,T.data_type,T.data_length,T.data_precision,T.data_scale,T.nullable,T.column_id,T1.COMMENTS from user_tab_columns T INNER JOIN user_col_comments T1 ON T.COLUMN_NAME = T1.column_name AND T.TABLE_NAME = T1.table_name where T.table_name='" + tabnale.ToUpper() + "'";
+            string sql = "select T.table_name,T.column_name,T.data_type,T.data_length,T.data_precision,T.data_scale,T.nullable,T.column_id,T1.COMMENTS from user_tab_columns T INNER JOIN user_col_comments T1 ON T.COLUMN_NAME = T1.column_name AND T.TABLE_NAME = T1.table_name where T.table_name='" + tabnale.ToUpper() + "' ORDER BY T.COLUMN_ID";
             OpenConn();
             return (ReturnDataSet(sql, "dv")).Tables[0];
 
