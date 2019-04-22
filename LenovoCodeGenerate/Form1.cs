@@ -1336,6 +1336,10 @@ namespace LenovoCodeGenerate
                 if (b + 1 == filedDic.Count)
                     splitChar = "";
                 if (CheckNumberType(item.Value)) { sb.AppendFormat("               sql.AppendFormat(\"    {0} {1} \",model.{2});     \r\n", "{0}", splitChar, filedName.SplitUnderLine()); }
+                else if (CheckDataTimeType(item.Value))
+                {
+                    sb.AppendFormat("               sql.AppendFormat(\"     to_date('{0}','yyyy-mm-dd hh24:mi:ss') {1} \",model.{2});     \r\n", "{0}", splitChar, filedName.SplitUnderLine());
+                }
                 else 
                 sb.AppendFormat("               sql.AppendFormat(\"    '{0}' {1} \",model.{2});     \r\n", "{0}", splitChar, filedName.SplitUnderLine());
                 b++;
@@ -1365,11 +1369,16 @@ namespace LenovoCodeGenerate
                 string splitChar = ",";
                 if (i + 1 == filedDic.Count)
                     splitChar = "";
-                if (filedName != keyName) { 
-                if (CheckNumberType(item.Value))
-                {
-                    sb.AppendFormat("                sql.AppendFormat(\"   {0} = {1} {2} \",model.{3}); \r\n", filedName, "{0}", splitChar, filedName.SplitUnderLine()); }
-                else
+                if (filedName != keyName) {
+                    if (CheckNumberType(item.Value))
+                    {
+                        sb.AppendFormat("                sql.AppendFormat(\"   {0} = {1} {2} \",model.{3}); \r\n", filedName, "{0}", splitChar, filedName.SplitUnderLine());
+                    }
+                    else if (CheckDataTimeType(item.Value))
+                    {
+                        sb.AppendFormat("                sql.AppendFormat(\"   {0} = to_date('{1}','yyyy-mm-dd hh24:mi:ss') {2} \",model.{3}); \r\n", filedName, "{0}", splitChar, filedName.SplitUnderLine());
+                    }
+                    else
                     sb.AppendFormat("                sql.AppendFormat(\"   {0} = '{1}' {2} \",model.{3}); \r\n", filedName, "{0}", splitChar, filedName.SplitUnderLine());
                 }
                 i++;
@@ -1607,6 +1616,35 @@ namespace LenovoCodeGenerate
                     break;
                 case "date":
                     reval = false;
+                    break;
+                default:
+                    reval = false;
+                    break;
+            }
+            return reval.Value;
+        }
+
+        /// <summary>
+        /// 如果是是Datetime一类的 返回true
+        /// </summary>
+        /// <param name="type"></param>
+        /// <returns></returns>
+        private static bool CheckDataTimeType(string type)
+        {
+            bool? reval = null;
+            switch (type.ToLower())
+            {
+                case "timestamp":
+                    reval = true;
+                    break;
+                case "date":
+                    reval = true;
+                    break;
+                case "smalldatetime":
+                    reval = true;
+                    break;
+                case "datetime":
+                    reval = true;
                     break;
                 default:
                     reval = false;
