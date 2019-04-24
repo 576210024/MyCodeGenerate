@@ -1247,9 +1247,9 @@ namespace LenovoCodeGenerate
                 sb.Append("        /// </summary>                                                                          \r\n  ");
                 sb.Append("        /// <param name=\"dbType\"></param>                                                     \r\n  ");
                 sb.Append("        /// <returns>【类名称】代理</returns>                                                   \r\n  ");
-                sb.Append("        public static Proxy【业务分类】Business 【业务分类】BusinessProxy(EnumDBType dbType);   \r\n  ");
+                sb.Append("        public static Proxy【业务分类】Business 【业务分类】BusinessProxy()                     \r\n  ");
                 sb.Append("        {                                                                                       \r\n  ");
-                sb.Append("            return Proxy【业务分类】Business();                                                 \r\n  ");
+                sb.Append("            return new Proxy【业务分类】Business();                                                 \r\n  ");
                 sb.Append("        }                                                                                       \r\n  ");
                 #endregion
 
