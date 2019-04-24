@@ -228,7 +228,6 @@
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "联想医疗代码生成器-基本版";
-            this.TopMost = true;
             this.ResumeLayout(false);
             this.PerformLayout();
 

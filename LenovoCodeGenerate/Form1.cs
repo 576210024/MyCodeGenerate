@@ -1658,13 +1658,14 @@ namespace LenovoCodeGenerate
 
         private void button1_Click(object sender, EventArgs e)
         {
-             SolutionName = txtSolutionName.Text.ToString();
+            SolutionName = txtSolutionName.Text.ToString();
             ProxyBaseName = txtProxy.Text.ToString();
             SolutionAuth = txtAuthName.Text.ToString();
 
             DirSolutionPath = Path.Combine( txtDisk.Text, SolutionName);
             Init();
             if (Directory.Exists(DirSolutionPath)) { Directory.Delete(DirSolutionPath, true); }
+            else Directory.CreateDirectory(DirSolutionPath);
             Dictionary<string, Dictionary<string, string>> r = new Dictionary<string, Dictionary<string, string>>();
             if (rdioSqlserver.Checked)
                 r = GetDBInfo();
