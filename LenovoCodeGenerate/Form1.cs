@@ -1370,11 +1370,12 @@ namespace LenovoCodeGenerate
                 if (i + 1 == filedDic.Count)
                     splitChar = "";
                 if (filedName != keyName) {
-                    if (CheckNumberType(item.Value))
-                    {
-                        sb.AppendFormat("                sql.AppendFormat(\"   {0} = {1} {2} \",model.{3}); \r\n", filedName, "{0}", splitChar, filedName.SplitUnderLine());
-                    }
-                    else if (CheckDataTimeType(item.Value))
+                    //if (CheckNumberType(item.Value))
+                    //{
+                    //    sb.AppendFormat("                sql.AppendFormat(\"   {0} = {1} {2} \",model.{3}); \r\n", filedName, "{0}", splitChar, filedName.SplitUnderLine());
+                    //}
+                    //else
+                    if (CheckDataTimeType(item.Value))
                     {
                         sb.AppendFormat("                sql.AppendFormat(\"   {0} = to_date('{1}','yyyy-mm-dd hh24:mi:ss') {2} \",model.{3}); \r\n", filedName, "{0}", splitChar, filedName.SplitUnderLine());
                     }
