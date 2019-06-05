@@ -45,6 +45,7 @@ namespace LenovoCodeGenerate
         static string HisModelNameSpace = "Lenovo.HIS.Entities";
         static string HisCommonNameSpace = "Lenovo.HIS.Common";
         static string HiscUtilsNameSpace = "Lenovo.HIS.cUtils";
+        static string HissUtilsNameSpace = "Lenovo.HIS.sUtils";
 
         static string RuleNameSpace = SolutionName + ".sDBRule";//DAL层命名空间（下同）
         static string EntitiesNameSpace = SolutionName + ".Entities";
@@ -60,6 +61,7 @@ namespace LenovoCodeGenerate
         static string cPresenterLayerPath   = Path.Combine(DirSolutionPath, cBllNameSpace , "Presenters");
         static string cViewLayerPath        = Path.Combine(DirSolutionPath, cBllNameSpace , "View");
         static string cViewModelLayerPath   = Path.Combine(DirSolutionPath, cBllNameSpace , "ViewModels");
+        static string sDBHelperLayerPath    = Path.Combine(DirSolutionPath, sBllNameSpace , "Common");
         static char DicSplit = '≡';//分隔符，注意：代码不是因此出错，建议不要修改 
         #endregion
 
@@ -164,35 +166,35 @@ namespace LenovoCodeGenerate
                 StringBuilder sb = new StringBuilder();
                 sb.Append("  /**************************************************  \r\n");
                 sb.Append("   ** Company  ：  联想智慧医疗                        \r\n");
-                sb.Append("   ** ClassName：  【表】                                \r\n");
+                sb.Append("   ** ClassName：  【表】                              \r\n");
                 sb.Append("   ** Ver      ：  V1.0.0.0                            \r\n");
-                sb.Append("   ** Desc     ：  【表职责】                           \r\n");
-                sb.Append("   ** auth     ：  【开发者名字】                              \r\n");
+                sb.Append("   ** Desc     ：  【表职责】                          \r\n");
+                sb.Append("   ** auth     ：  【开发者名字】                      \r\n");
                 sb.Append("   ** date     ： 【时间戳】                           \r\n");
                 sb.Append("  **************************************************/  \r\n");
                 sb.Append("  using System;                                        \r\n");
                 sb.Append("  using System.Text;                                   \r\n");
-                sb.Append("  using 【HIS公共命名空间】;                             \r\n");
+                sb.Append("  using 【HIS公共命名空间】;                           \r\n");
                 sb.Append("  using System.Collections.Generic;                    \r\n");
                 sb.Append("  using System.Linq;                                   \r\n");
                 sb.Append("  using System.Runtime.Serialization;                  \r\n");
                 sb.Append("                                                       \r\n");
                 sb.Append("  namespace 【命名空间】                               \r\n");
                 sb.Append("  {                                                    \r\n");
-                sb.Append("        ///<summary>                                         \r\n");
-                sb.Append("        ///【表职责】                                       \r\n"); 
-                sb.Append("        ///<summary>                                         \r\n");
-                sb.Append("        [Serializable]                                    \r\n ");
-                sb.Append("        [DataContract]                                    \r\n ");
-                sb.Append("        public partial class 【类名称】                   \r\n ");
-                sb.Append("        {                                                \r\n");
+                sb.Append("        ///<summary>                                   \r\n");
+                sb.Append("        ///【表职责】                                  \r\n"); 
+                sb.Append("        ///<summary>                                   \r\n");
+                sb.Append("        [Serializable]                                 \r\n");
+                sb.Append("        [DataContract]                                 \r\n");
+                sb.Append("        public partial class 【类名称】                \r\n");
+                sb.Append("        {                                              \r\n");
                 sb.Append("                                                       \r\n");
-                sb.Append("            public 【类名称】()                              \r\n");
-                sb.Append("            {                                           \r\n ");
-                sb.Append("            }                                           \r\n ");
-                sb.Append("         【属性部分】                                  \r\n ");
-                sb.Append("     }                                                \r\n ");
-                sb.Append("  }                                                   \r\n ");
+                sb.Append("            public 【类名称】()                        \r\n");
+                sb.Append("            {                                          \r\n");
+                sb.Append("            }                                          \r\n");
+                sb.Append("         【属性部分】                                  \r\n");
+                sb.Append("     }                                                 \r\n");
+                sb.Append("  }                                                    \r\n");
 
                 #endregion
 
@@ -212,16 +214,16 @@ namespace LenovoCodeGenerate
 
                     string pF = fName.SplitUnderLine();
                     propPart.Append("                                                 \r\n");
-                    propPart.Append("        ///<summary>                             \r\n");
-              propPart.AppendFormat("        ///{0}                                   \r\n", fRemark);
-                    propPart.Append("        ///<summary>                             \r\n");
-                    propPart.Append("        [DataMember]                             \r\n");
-              propPart.AppendFormat("        [DataField(\"{0}\")]                     \r\n", tfName);
-              propPart.AppendFormat("        public {0} {1}                         \r\n", type, pF);
-                    propPart.Append("        {                                        \r\n");
-                    propPart.Append("              get;                               \r\n");
-                    propPart.Append("              set;                               \r\n");
-                    propPart.Append("        }                                        \r\n");
+                    propPart.Append("       ///<summary>                             \r\n");
+              propPart.AppendFormat("       ///{0}                                   \r\n", fRemark);
+                    propPart.Append("       ///<summary>                             \r\n");
+                    propPart.Append("       [DataMember]                             \r\n");
+              propPart.AppendFormat("       [DataField(\"{0}\")]                     \r\n", tfName);
+              propPart.AppendFormat("       public {0} {1}                           \r\n", type, pF);
+                    propPart.Append("       {                                        \r\n");
+                    propPart.Append("             get;                               \r\n");
+                    propPart.Append("             set;                               \r\n");
+                    propPart.Append("       }                                        \r\n");
                 }
                 #endregion
 
@@ -229,7 +231,7 @@ namespace LenovoCodeGenerate
                 string tblName = tableInfo[0];
                 string tblWork = tableInfo.Length == 3 ? tableInfo[1] : "";
                 string r = sb.ToString()
-                        .Replace("【类名称】", tblName.SplitUnderLine())
+                        .Replace("【类名称】", tblName.GetSplitTableName())
                         .Replace("【时间戳】", DateTime.Now.ToString())
                         .Replace("【命名空间】", EntitiesNameSpace)
                         .Replace("【表】", tblName + "表实体类")
@@ -237,7 +239,7 @@ namespace LenovoCodeGenerate
                         .Replace("【属性部分】", propPart.ToString())
                         .Replace("【开发者名字】",SolutionAuth  )
                         .Replace("【HIS公共命名空间】", HisCommonNameSpace);
-                CreateTxt( Path.Combine(ModelLayerPath , tblName.SplitUnderLine() + ".cs"), ModelLayerPath, r);
+                CreateTxt( Path.Combine(ModelLayerPath , tblName.GetSplitTableName() + ".cs"), ModelLayerPath, r);
             }
 
         }
@@ -349,8 +351,8 @@ namespace LenovoCodeGenerate
                 string updateSQL = GetUpdateSQL(tblName, item.Value, keyName);
                 string deleteSQL = GetDeleteSQL(tblName, item.Value, keyName);
                 string r = sb.ToString()
-                            .Replace("【类名称】", tblName.SplitUnderLine())
-                            .Replace("【业务分类】", tblName.SplitFirstUnderLine())
+                            .Replace("【类名称】", tblName.GetSplitTableName())
+                            .Replace("【业务分类】", tblName.GetSplitTableName())
                             .Replace("【时间戳】", DateTime.Now.ToString())
                             .Replace("【命名空间】", RuleNameSpace)
                             .Replace("【开发者名字】", SolutionAuth)
@@ -359,7 +361,7 @@ namespace LenovoCodeGenerate
                             .Replace("【当前表Delete】", deleteSQL)
                             .Replace("【当前表Insert】", insertSQL)
                             .Replace("【当前表Update】", updateSQL);
-                CreateTxt(Path.Combine(sRuleLayerPath , tblName.SplitFirstUnderLine() + "Rule.cs"), sRuleLayerPath, r);
+                CreateTxt(Path.Combine(sRuleLayerPath , tblName.GetSplitTableName() + "Rule.cs"), sRuleLayerPath, r);
             }
 
         }
@@ -450,15 +452,15 @@ namespace LenovoCodeGenerate
                 string tblName = tableInfo[0];
                 string tblWork = tableInfo.Length == 3 ? tableInfo[1] : "";
                 string r = sb.ToString()
-                            .Replace("【类名称】", tblName.SplitUnderLine())
-                            .Replace("【业务分类】", tblName.SplitFirstUnderLine())
+                            .Replace("【类名称】", tblName.GetSplitTableName())
+                            .Replace("【业务分类】", tblName.GetSplitTableName())
                             .Replace("【时间戳】", DateTime.Now.ToString())
                             .Replace("【命名空间】", IBllNameSpace)
                             .Replace("【表】", tblName)
                             .Replace("【表职责】", tblWork.SplitSpecialChar())
                         .Replace("【开发者名字】", SolutionAuth)
                             .Replace("【实体类命名空间】", EntitiesNameSpace);
-                CreateTxt(Path.Combine(IBllLayerPath , "I" + tblName.SplitFirstUnderLine() + "Business.cs"), IBllLayerPath, r);
+                CreateTxt(Path.Combine(IBllLayerPath , "I" + tblName.GetSplitTableName() + "Business.cs"), IBllLayerPath, r);
             }
 
         }
@@ -627,8 +629,8 @@ namespace LenovoCodeGenerate
                 #endregion
                 string tblName = item.Key.Split(DicSplit)[0];
                 string r = sb.ToString()
-                            .Replace("【类名称】", tblName.SplitUnderLine())
-                            .Replace("【业务分类】", tblName.SplitFirstUnderLine())
+                            .Replace("【类名称】", tblName.GetSplitTableName())
+                            .Replace("【业务分类】", tblName.GetSplitTableName())
                             .Replace("【时间戳】", DateTime.Now.ToString())
                             .Replace("【命名空间】", sBllNameSpace)
                             .Replace("【实体类命名空间】", EntitiesNameSpace)
@@ -636,7 +638,7 @@ namespace LenovoCodeGenerate
                             .Replace("【HIS公共命名空间】", HisCommonNameSpace)
                             .Replace("【表】", tblName)
                             .Replace("【开发者名字】", SolutionAuth);
-                CreateTxt(Path.Combine(BllLayerPath , tblName.SplitFirstUnderLine() + "Business.cs"), BllLayerPath, r);
+                CreateTxt(Path.Combine(BllLayerPath , tblName.GetSplitTableName() + "Business.cs"), BllLayerPath, r);
             }
 
         }
@@ -733,8 +735,8 @@ namespace LenovoCodeGenerate
                 string tblName = tableInfo[0];
                 string tblWork = tableInfo.Length == 3 ? tableInfo[1] : "";
                 string r = sb.ToString()
-                            .Replace("【类名称】", tblName.SplitUnderLine())
-                            .Replace("【业务分类】", tblName.SplitFirstUnderLine())
+                            .Replace("【类名称】", tblName.GetSplitTableName())
+                            .Replace("【业务分类】", tblName.GetSplitTableName())
                             .Replace("【代理业务基类】", ProxyBaseName)
                             .Replace("【HIScUtils命名空间】", HiscUtilsNameSpace)
                             .Replace("【接口命名空间】", IBllNameSpace)
@@ -744,7 +746,7 @@ namespace LenovoCodeGenerate
                             .Replace("【表职责】", tblWork.SplitSpecialChar())
                             .Replace("【实体类命名空间】", EntitiesNameSpace)
                             .Replace("【开发者名字】", SolutionAuth);
-                CreateTxt(Path.Combine(cProxyLayerPath , "Proxy" + tblName.SplitFirstUnderLine() + "Business.cs"), cProxyLayerPath, r);
+                CreateTxt(Path.Combine(cProxyLayerPath , "Proxy" + tblName.GetSplitTableName() + "Business.cs"), cProxyLayerPath, r);
             }
 
         }
@@ -858,8 +860,8 @@ namespace LenovoCodeGenerate
                 string tblName = tableInfo[0];
                 string tblWork = tableInfo.Length == 3 ? tableInfo[1] : "";
                 string r = sb.ToString()
-                            .Replace("【类名称】", tblName.SplitUnderLine())
-                            .Replace("【业务分类】", tblName.SplitFirstUnderLine())
+                            .Replace("【类名称】", tblName.GetSplitTableName())
+                            .Replace("【业务分类】", tblName.GetSplitTableName())
                             .Replace("【代理业务基类】", ProxyBaseName)
                             .Replace("【时间戳】", DateTime.Now.ToString())
                             .Replace("【命名空间】", cBllNameSpace)
@@ -867,7 +869,7 @@ namespace LenovoCodeGenerate
                             .Replace("【表职责】", tblWork.SplitSpecialChar())
                             .Replace("【实体类命名空间】", EntitiesNameSpace)
                             .Replace("【开发者名字】", SolutionAuth);
-                CreateTxt(Path.Combine(cPresenterLayerPath , tblName.SplitFirstUnderLine() + "Presenter.cs"), cPresenterLayerPath, r);
+                CreateTxt(Path.Combine(cPresenterLayerPath , tblName.GetSplitTableName() + "Presenter.cs"), cPresenterLayerPath, r);
             }
 
         }
@@ -932,15 +934,15 @@ namespace LenovoCodeGenerate
                 string tblName = tableInfo[0];
                 string tblWork = tableInfo.Length == 3 ? tableInfo[1] : "";
                 string r = sb.ToString()
-                            .Replace("【类名称】", tblName.SplitUnderLine())
-                            .Replace("【业务分类】", tblName.SplitFirstUnderLine())
+                            .Replace("【类名称】", tblName.GetSplitTableName())
+                            .Replace("【业务分类】", tblName.GetSplitTableName())
                             .Replace("【时间戳】", DateTime.Now.ToString())
                             .Replace("【命名空间】", cBllNameSpace)
                             .Replace("【表】", tblName)
                             .Replace("【表职责】", tblWork.SplitSpecialChar())
                             .Replace("【实体类命名空间】", EntitiesNameSpace)
                             .Replace("【开发者名字】", SolutionAuth);
-                CreateTxt(Path.Combine(cViewLayerPath , "I" + tblName.SplitFirstUnderLine() + "View.cs"), cViewLayerPath, r);
+                CreateTxt(Path.Combine(cViewLayerPath , "I" + tblName.GetSplitTableName() + "View.cs"), cViewLayerPath, r);
             }
 
         }
@@ -1005,8 +1007,8 @@ namespace LenovoCodeGenerate
                 string tblName = tableInfo[0];
                 string tblWork = tableInfo.Length == 3 ? tableInfo[1] : "";
                 string r = sb.ToString()
-                            .Replace("【类名称】", tblName.SplitUnderLine())
-                            .Replace("【业务分类】", tblName.SplitFirstUnderLine())
+                            .Replace("【类名称】", tblName.GetSplitTableName())
+                            .Replace("【业务分类】", tblName.GetSplitTableName())
                             .Replace("【时间戳】", DateTime.Now.ToString())
                             .Replace("【命名空间】", cBllNameSpace)
                             .Replace("【表】", tblName)
@@ -1014,7 +1016,7 @@ namespace LenovoCodeGenerate
                             .Replace("【实体类命名空间】", EntitiesNameSpace)
                             .Replace("【主键名称】", tableInfo[2].SplitUnderLine())
                             .Replace("【开发者名字】", SolutionAuth);
-                CreateTxt(Path.Combine(cViewModelLayerPath , tblName.SplitFirstUnderLine() + "ViewModel.cs"), cViewModelLayerPath, r);
+                CreateTxt(Path.Combine(cViewModelLayerPath , tblName.GetSplitTableName() + "ViewModel.cs"), cViewModelLayerPath, r);
             }
 
         }
@@ -1079,8 +1081,8 @@ namespace LenovoCodeGenerate
                 string tblName = tableInfo[0];
                 string tblWork = tableInfo.Length == 3 ? tableInfo[1] : "";
                 r = sb.ToString()
-                            .Replace("【类名称】", tblName.SplitUnderLine())
-                            .Replace("【业务分类】", tblName.SplitFirstUnderLine())
+                            .Replace("【类名称】", tblName.GetSplitTableName())
+                            .Replace("【业务分类】", tblName.GetSplitTableName())
                             .Replace("【时间戳】", DateTime.Now.ToString())
                             .Replace("【命名空间】", RuleNameSpace)
                             .Replace("【表】", tblName)
@@ -1098,6 +1100,113 @@ namespace LenovoCodeGenerate
 
         }
         #endregion
+
+        #region 遍历生成 DBHelper   层代码
+        private static void DBHelper(Dictionary<string, Dictionary<string, string>> dic)
+        {
+            StringBuilder sb = new StringBuilder();
+            string r = "";
+
+            sb.Append("/**************************************************                      \r\n  ");
+            sb.Append("** Company  ：  联想智慧医疗                                             \r\n  ");
+            sb.Append("** ClassName：  DBHelper                                                 \r\n  ");
+            sb.Append("** Ver      ：  V1.0.0.0                                                 \r\n  ");
+            sb.Append("** Desc     ：  DBHelper                                                 \r\n  ");
+            sb.Append("** auth     ：  【开发者名字】                                           \r\n  ");
+            sb.Append("** date     ：  【时间戳】                                               \r\n  ");
+            sb.Append("****************************************************/                    \r\n  ");
+            sb.AppendFormat("using {0};									                        \r\n  ", RuleNameSpace);
+            sb.AppendFormat("using {0};                                                         \r\n  ", HissUtilsNameSpace);
+            sb.Append("using System;                                                            \r\n  ");
+            sb.Append("using System.Collections.Generic;                                        \r\n  ");
+            sb.Append("using System.Data;                                                       \r\n  ");
+            sb.Append("using System.Linq;                                                       \r\n  ");
+            sb.Append("using System.Text;                                                       \r\n  ");
+            sb.Append("using System.Threading.Tasks;                                            \r\n  ");
+            sb.Append("                                                                         \r\n  ");
+            sb.Append("namespace 【命名空间】                     								\r\n  ");
+            sb.Append("{                                                                        \r\n  ");
+            sb.Append("    public class DBHelper                                                \r\n  ");
+            sb.Append("    {                                                                    \r\n  ");
+            sb.Append("                                                                         \r\n  ");
+            sb.Append("        private static SQLHelper m_SQLHelp;                              \r\n  ");
+            sb.Append("        private static IDBHelp m_DBHelper = null;                        \r\n  ");
+            sb.Append("        static DBHelper()                                                \r\n  ");
+            sb.Append("        {                                                                \r\n  ");
+            sb.Append("            m_SQLHelp = new SQLHelper(\"LenovoCIS\");//数据库链接实例    \r\n  ");
+            sb.Append("            m_DBHelper = m_SQLHelp.m_DBHelp;                             \r\n  ");
+            sb.Append("        }                                                                \r\n  ");
+            sb.Append("                                                                         \r\n  ");
+            sb.Append("        /// <summary>                                                    \r\n  ");
+            sb.Append("        /// 获取SQLHelper对象                                            \r\n  ");
+            sb.Append("        /// </summary>                                                   \r\n  ");
+            sb.Append("        /// <returns></returns>                                          \r\n  ");
+            sb.Append("        public static IDBHelp Instance                                   \r\n  ");
+            sb.Append("        {                                                                \r\n  ");
+            sb.Append("            get                                                          \r\n  ");
+            sb.Append("            {                                                            \r\n  ");
+            sb.Append("                if (m_DBHelper != null)                                  \r\n  ");
+            sb.Append("                {                                                        \r\n  ");
+            sb.Append("                    return m_DBHelper;                                   \r\n  ");
+            sb.Append("                }                                                        \r\n  ");
+            sb.Append("                else                                                     \r\n  ");
+            sb.Append("                {                                                        \r\n  ");
+            sb.Append("                    m_DBHelper = m_SQLHelp.m_DBHelp;                     \r\n  ");
+            sb.Append("                    return m_DBHelper;                                   \r\n  ");
+            sb.Append("                }                                                        \r\n  ");
+            sb.Append("            }                                                            \r\n  ");
+            sb.Append("        }                                                                \r\n  ");
+            foreach (var item in dic)
+            {
+                {
+                    #region  类模板
+                    sb.Append("        #region RuleFactory成生成【表】Rule 对象					                                    \r\n  ");
+                    sb.Append("        private static DataRule m_DataRule;						                                    \r\n  ");
+                    sb.Append("        /// <summary>	                                                                            \r\n  ");
+                    sb.Append("        /// 获取数据规则                                                                             \r\n  ");
+                    sb.Append("        /// </summary>                                                                               \r\n  ");
+                    sb.Append("        /// <returns></returns>                                                                      \r\n  ");
+                    sb.Append("        public static 【业务分类】Rule Get【业务分类】Rule()                                         \r\n  ");
+                    sb.Append("        {                                                                                            \r\n  ");
+                    sb.Append("            if (m_【业务分类】Rule != null)                                                          \r\n  ");
+                    sb.Append("            {                                                                                        \r\n  ");
+                    sb.Append("                                                                                                     \r\n  ");
+                    sb.Append("                return m_【业务分类】Rule;                                                           \r\n  ");
+                    sb.Append("            }                                                                                        \r\n  ");
+                    sb.Append("            else                                                                                     \r\n  ");
+                    sb.Append("            {                                                                                        \r\n  ");
+                    sb.Append("                m_【业务分类】Rule = RuleFactory.CreateInterface().Create【业务分类】Rule(m_SQLHelp.m_DBType); \r\n  ");
+                    sb.Append("                return m_【业务分类】Rule;													 \r\n  ");
+                    sb.Append("            }                                                                                  \r\n  ");
+                    sb.Append("        }																					  \r\n  ");
+                    sb.Append("        #endregion					                                                                \r\n  ");
+                    #endregion
+                    
+                    string[] tableInfo = item.Key.Split(DicSplit);
+                    string tblName = tableInfo[0];
+                    string tblWork = tableInfo.Length == 3 ? tableInfo[1] : "";
+                    r = sb.ToString()
+                                .Replace("【类名称】", tblName.GetSplitTableName())
+                                .Replace("【业务分类】", tblName.GetSplitTableName())
+                                .Replace("【时间戳】", DateTime.Now.ToString())
+                                .Replace("【命名空间】", RuleNameSpace)
+                                .Replace("【表】", tblName)
+                                .Replace("【表职责】", tblWork.SplitSpecialChar())
+                                .Replace("【HIS实体命名空间】", HisModelNameSpace)
+                                .Replace("【实体类命名空间】", EntitiesNameSpace)
+                                .Replace("【开发者名字】", SolutionAuth);
+                    sb.Clear();
+                    sb.Append(r);
+                }
+                sb.Append("    }                                                                                                   \r\n  ");
+                sb.Append("}                                                                                                       \r\n  ");
+                r = sb.ToString();
+                CreateTxt(Path.Combine(sDBHelperLayerPath, "DBHelper.cs"), sDBHelperLayerPath, r);
+
+            }
+        }
+        #endregion
+
 
         #region 遍历生成 BaseRule      层代码
         private static void BaseRuleFactory(Dictionary<string, Dictionary<string, string>> dic)
@@ -1142,8 +1251,8 @@ namespace LenovoCodeGenerate
                 string tblName = tableInfo[0];
                 string tblWork = tableInfo.Length == 3 ? tableInfo[1] : "";
                 r = sb.ToString()
-                            .Replace("【类名称】", tblName.SplitUnderLine())
-                            .Replace("【业务分类】", tblName.SplitFirstUnderLine())
+                            .Replace("【类名称】", tblName.GetSplitTableName())
+                            .Replace("【业务分类】", tblName.GetSplitTableName())
                             .Replace("【时间戳】", DateTime.Now.ToString())
                             .Replace("【命名空间】", RuleNameSpace)
                             .Replace("【表】", tblName)
@@ -1257,8 +1366,8 @@ namespace LenovoCodeGenerate
                 string tblName = tableInfo[0];
                 string tblWork = tableInfo.Length == 3 ? tableInfo[1] : "";
                 r = sb.ToString()
-                            .Replace("【类名称】", tblName.SplitUnderLine())
-                            .Replace("【业务分类】", tblName.SplitFirstUnderLine())
+                            .Replace("【类名称】", tblName.GetSplitTableName())
+                            .Replace("【业务分类】", tblName.GetSplitTableName())
                             .Replace("【时间戳】", DateTime.Now.ToString())
                             .Replace("【命名空间】", cBllNameSpace)
                             .Replace("【表】", tblName)
@@ -1335,8 +1444,9 @@ namespace LenovoCodeGenerate
                 string splitChar = ",";
                 if (b + 1 == filedDic.Count)
                     splitChar = "";
-                if (CheckNumberType(item.Value)) { sb.AppendFormat("               sql.AppendFormat(\"    {0} {1} \",model.{2});     \r\n", "{0}", splitChar, filedName.SplitUnderLine()); }
-                else if (CheckDataTimeType(item.Value))
+                //if (CheckNumberType(item.Value)) { sb.AppendFormat("               sql.AppendFormat(\"    {0} {1} \",model.{2});     \r\n", "{0}", splitChar, filedName.SplitUnderLine()); }
+                //else
+                if (CheckDataTimeType(item.Value))
                 {
                     sb.AppendFormat("               sql.AppendFormat(\"     to_date('{0}','yyyy-mm-dd hh24:mi:ss') {1} \",model.{2});     \r\n", "{0}", splitChar, filedName.SplitUnderLine());
                 }
@@ -1411,6 +1521,9 @@ namespace LenovoCodeGenerate
             switch (type.ToLower())
             {
                 case "int":
+                    reval = "int?";
+                    break;
+                case "integer":
                     reval = "int?";
                     break;
                 case "text":
@@ -1523,6 +1636,9 @@ namespace LenovoCodeGenerate
             switch (type.ToLower())
             {
                 case "int":
+                    reval = true;
+                    break;
+                case "integer":
                     reval = true;
                     break;
                 case "text":
@@ -1704,7 +1820,7 @@ namespace LenovoCodeGenerate
              cViewLayerPath = Path.Combine(DirSolutionPath, cBllNameSpace, "View");
              cViewModelLayerPath = Path.Combine(DirSolutionPath, cBllNameSpace, "ViewModels");
         }
-
+        //生成其他
         private void button2_Click(object sender, EventArgs e)
         {
             SolutionName = txtSolutionName.Text.ToString();
@@ -1737,7 +1853,21 @@ namespace LenovoCodeGenerate
 
     public static class ObjectEx
     {
-
+        //type的值的含义
+        /*
+         * 例子 HD_CONSUL_ROLE_CHARGEITEM 会诊角色费目表
+         * 0 截取掉第零个 HdConsulRoleChargeItem
+         * 1 截取掉第一个 ConsulRoleChargeItem
+         * 2 截取掉第二个 RoleChargeItem
+         * 3 截取掉第三个 ChargeItem
+         * 4 截取掉第四个 一般不会出现4个 因为HD 为HospitalDoctor 大业务 Consul是子业务
+         * 按通用方法 应该是根据数据库表名直接生成不，需要截断名称
+         * 
+         */
+        /// <summary>
+        /// 需要生成的表名采用的哪种截断方式
+        /// </summary>
+        const int g_Type = 2;
         /// <summary>
         /// 将传输进来的字符串转换 主要是oracle 的列名和表名
         /// 比如：CONSUL_ID转换成ConsulId
@@ -1749,11 +1879,15 @@ namespace LenovoCodeGenerate
             var fieldsParts = fName.Split('_');
             string newFieldName = "";
             if (fieldsParts.Count() > 1)
+            {
+                int i = 0;
                 foreach (var fieldNamePart in fieldsParts)
                 {
-                    string ss = fieldNamePart.Substring(0, 1).ToUpper() + fieldNamePart.Substring(1, fieldNamePart.Length - 1).ToLower();
-                    newFieldName = newFieldName + ss;
+                        string ss = fieldNamePart.Substring(0, 1).ToUpper() + fieldNamePart.Substring(1, fieldNamePart.Length - 1).ToLower();
+                        newFieldName = newFieldName + ss;
+                   
                 }
+            }
             else
             {
                 string ss = fName.Substring(0, 1).ToUpper() + fName.Substring(1, fName.Length - 1).ToLower();
@@ -1777,7 +1911,69 @@ namespace LenovoCodeGenerate
                 int i = 0;
                 foreach (var fieldNamePart in fieldsParts)
                 {
-                    if (i != 0)
+                    if (i != 0 )
+                    {
+                        string ss = fieldNamePart.Substring(0, 1).ToUpper() + fieldNamePart.Substring(1, fieldNamePart.Length - 1).ToLower();
+                        newFieldName = newFieldName + ss;
+
+                    }
+                    i++;
+                }
+            }
+            else
+            {
+                string ss = fName.Substring(0, 1).ToUpper() + fName.Substring(1, fName.Length - 1).ToLower();
+                newFieldName = newFieldName + ss;
+            }
+            return newFieldName;
+        }
+        /// <summary>
+        /// 将传输进来的字符串转换 主要是去掉前缀 
+        /// 比如：HD_CONSUL_APPLY转换成ConsulApply
+        /// </summary>
+        /// <param name="fName"></param>
+        /// <returns></returns>
+        public static string SplitSecondUnderLine(this string fName)
+        {
+            var fieldsParts = fName.Split('_');
+            string newFieldName = "";
+            if (fieldsParts.Count() > 2)
+            {
+                int i = 0;
+                foreach (var fieldNamePart in fieldsParts)
+                {
+                    if (i > 1 )
+                    {
+                        string ss = fieldNamePart.Substring(0, 1).ToUpper() + fieldNamePart.Substring(1, fieldNamePart.Length - 1).ToLower();
+                        newFieldName = newFieldName + ss;
+
+                    }
+                    i++;
+                }
+            }
+            else
+            {
+                string ss = fName.Substring(0, 1).ToUpper() + fName.Substring(1, fName.Length - 1).ToLower();
+                newFieldName = newFieldName + ss;
+            }
+            return newFieldName;
+        }
+        /// <summary>
+        /// 将传输进来的字符串转换 主要是去掉前缀 
+        /// 比如：HD_CONSUL_APPLY转换成ConsulApply
+        /// </summary>
+        /// <param name="fName"></param>
+        /// <returns></returns>
+        public static string SplitThirdUnderLine(this string fName)
+        {
+            var fieldsParts = fName.Split('_');
+            string newFieldName = "";
+            if (fieldsParts.Count() > 2)
+            {
+                int i = 0;
+                foreach (var fieldNamePart in fieldsParts)
+                {
+                    if (i > 2)
                     {
                         string ss = fieldNamePart.Substring(0, 1).ToUpper() + fieldNamePart.Substring(1, fieldNamePart.Length - 1).ToLower();
                         newFieldName = newFieldName + ss;
@@ -1802,7 +1998,50 @@ namespace LenovoCodeGenerate
         {
             return str.Replace("\n", "").Replace(" ", "").Replace("\t", "").Replace("\r", "");
         }
-
+        /// <summary>
+        /// 根据数据结构去生成表名称
+        /// </summary>
+        /// <param name="tableName"></param>
+        /// <returns></returns>
+        public static string GetSplitTableNameByData(this string tableName)
+        {
+            return SplitUnderLine(tableName); 
+        }
+        /// <summary>
+        /// 根据业务分类去生成表名称
+        /// </summary>
+        /// <param name="tableName"></param>
+        /// <returns></returns>
+        public static string GetSplitTableNameByBusiness(this string tableName)
+        {
+            return SplitSecondUnderLine(tableName);
+        }
+        /// <summary>
+        /// 根据业务分类去生成表名称
+        /// </summary>
+        /// <param name="tableName"></param>
+        /// <returns></returns>
+        public static string GetSplitTableName(this string tableName)
+        {
+            if ( g_Type == 0 )
+            {
+                return SplitUnderLine(tableName);
+            }
+            else if ( g_Type == 1 )
+            {
+                return SplitFirstUnderLine(tableName);
+            }
+            else if ( g_Type == 2 )
+            {
+                return SplitSecondUnderLine(tableName);
+            }
+            else if ( g_Type == 3 )
+            {
+                return SplitThirdUnderLine(tableName);
+            }
+            return SplitUnderLine(tableName);
+        }
+        //这里有个误区，项目架构没有按照数据结构或者ddd设计
     }
 
 }

@@ -138,7 +138,7 @@
             this.txtProxy.Name = "txtProxy";
             this.txtProxy.Size = new System.Drawing.Size(219, 21);
             this.txtProxy.TabIndex = 8;
-            this.txtProxy.Text = "ProxyConsultationBase";
+            this.txtProxy.Text = "ProxyOrderBase";
             // 
             // label5
             // 
@@ -155,7 +155,7 @@
             this.txtSolutionName.Name = "txtSolutionName";
             this.txtSolutionName.Size = new System.Drawing.Size(219, 21);
             this.txtSolutionName.TabIndex = 10;
-            this.txtSolutionName.Text = "Lenovo.CIS.Consultation";
+            this.txtSolutionName.Text = "Lenovo.CIS.CP";
             // 
             // textBox1
             // 
@@ -182,7 +182,7 @@
             this.txtTabLike1.Name = "txtTabLike1";
             this.txtTabLike1.Size = new System.Drawing.Size(98, 21);
             this.txtTabLike1.TabIndex = 14;
-            this.txtTabLike1.Text = "HD_CONSUL";
+            this.txtTabLike1.Text = "HD_CP";
             // 
             // txtTabLike2
             // 
@@ -190,7 +190,7 @@
             this.txtTabLike2.Name = "txtTabLike2";
             this.txtTabLike2.Size = new System.Drawing.Size(104, 21);
             this.txtTabLike2.TabIndex = 16;
-            this.txtTabLike2.Text = "ITEMS";
+            this.txtTabLike2.Text = "PATH_ABNORMAL";
             // 
             // button2
             // 
