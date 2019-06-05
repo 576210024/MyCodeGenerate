@@ -24,7 +24,7 @@
 * 7、遍历DBInfo，生成 Presenters层代码
 * 8、遍历DBInfo，生成 I--View层代码
 * 9、遍历DBInfo，生成 ViewModel层代码
-* 10、遍历DBInfo，生成 RuleFactory,BaseRule,Presenter,RuleFactory代码
+* 10、遍历DBInfo，生成 RuleFactory,BaseRule,Presenter,RuleFactory,DBHelper代码
 
 ----------------未完成功能点-----------------
 
